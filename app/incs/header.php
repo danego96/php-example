@@ -1,3 +1,5 @@
+<?php defined("MYAPP") or die("Forbidden"); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,31 +33,3 @@
                 </div>
             </nav>
         </header>
-
-        <main class="main py-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8">
-                        <?= $post ?>
-                    </div>
-                    <div class="col-md-4">
-                        <h3>Recent Posts</h3>
-                        <?php foreach ($recent_posts as $recent_post) : ?>
-                            <ul class="list-group">
-                                <li class="list-group-item"> <a href="/post/<?= $recent_post['slug'] ?>"> <?= $recent_post['title'] ?></a></li>
-                            </ul>
-                        <?php endforeach ?>
-                    </div>
-                </div>
-        </main>
-
-        <footer class="fotter">
-            <div class="p-3 bg-dark text-white text-center">
-                <p> &copy; Copyright <?= date('Y') ?>
-            </div>
-        </footer>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
-
-</html>

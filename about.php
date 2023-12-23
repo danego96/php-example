@@ -1,5 +1,9 @@
 <?php
 
+define("MYAPP", true);
+
+require 'funcs.php';
+
 $title = 'My Blog :: About';
 
 $post = '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem accusamus ea soluta voluptatum laboriosam distinctio odio omnis aut ullam eaque obcaecati repellendus enim esse quod exercitationem, sit officiis illum eos.</p>
@@ -29,4 +33,4 @@ $recent_posts = [
   ],
 ];
 
-require_once 'about.tpl.php';
+require_once 'app/views/about.tpl.php';
