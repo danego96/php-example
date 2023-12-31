@@ -1,8 +1,6 @@
 <?php
 
-define("MYAPP", true);
 
-require 'funcs.php';
 
 $title = 'My Blog :: Home';
 
@@ -58,4 +56,4 @@ $recent_posts = [
   ],
 ];
 
-require_once 'app/views/index.tpl.php';
+require_once VIEWS . '/index.tpl.php';
