@@ -2,10 +2,9 @@
 <main class="main py-3">
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                <?= $post ?>
+            <div class="col-md-12">
+                <h3>404 - page not found</h3>
             </div>
-            <?php require VIEWS . '/incs/sidebar.php' ?>
         </div>
 </main>
 <?php require VIEWS . '/incs/footer.php' ?>
