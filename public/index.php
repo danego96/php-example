@@ -8,7 +8,6 @@ require CORE . '/classes/Db.php';
 $db_config = require CONFIG . '/db.php';
 $db = new Db($db_config);
 
-$posts = $db->query("SELECT * FROM posts")->fetchAll();
 
 
 require CORE . '/router.php';

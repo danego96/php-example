@@ -1,10 +1,13 @@
 <?php
 
+/**
+ * @var Db $db
+ */
 
 
 $title = 'My Blog :: Home';
 
-$posts = $db->query("SELECT * FROM posts ORDER BY id ASC")->fetchall();
-$recent_posts = $db->query("SELECT * FROM posts ORDER BY id DESC LIMIT 3")->fetchall();
+$posts = $db->query("SELECT * FROM posts ORDER BY id ASC")->findAll();
+$recent_posts = $db->query("SELECT * FROM posts ORDER BY id DESC LIMIT 3")->findAll();
 
 require_once VIEWS . '/index.tpl.php';
