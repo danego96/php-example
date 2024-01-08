@@ -6,10 +6,10 @@
         <?php foreach ($posts as $post) : ?>
           <div class="card mb-3">
             <div class="card-body">
-              <h5 class="card-title"><a href="/post/<?= $post['slug'] ?>"><?= $post['title'] ?></a></h5>
+              <h5 class="card-title"><a href="post?id=<?= $post['id'] ?>"><?= $post['title'] ?></a></h5>
               <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-              <p class="card-text"><?= $post['description'] ?></p>
-              <a href="/post/<?= $post['slug'] ?> class=" card-link">Card link</a>
+              <p class="card-text"><?= $post['excerpt'] ?></p>
+              <a href="post?id=<?= $post['id'] ?>" class=" card-link">Card link</a>
             </div>
           </div>
         <?php endforeach ?>
