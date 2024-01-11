@@ -6,7 +6,7 @@ require CORE . '/funcs.php';
 require CORE . '/classes/Db.php';
 
 $db_config = require CONFIG . '/db.php';
-$db = new Db($db_config);
+$db = (Db::getInstnce())->getConnection($db_config);
 
 
 
