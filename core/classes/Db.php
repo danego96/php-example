@@ -19,7 +19,7 @@ class Db
 
     public static function getInstnce()
     {
-        if(self::$instance === null){
+        if (self::$instance === null) {
             self::$instance = new self();
         }
         return self::$instance;
@@ -38,27 +38,34 @@ class Db
 
     public function query($query, $params = [])
     {
-        $this->stmt = $this->connection->prepare($query);
-        $this->stmt->execute($params);
+        try {
+            $this->stmt = $this->connection->prepare($query);
+            $this->stmt->execute($params);
+        } catch (PDOException $e) {
+            return false;
+        }
+
+
+
         return $this;
     }
 
     public function findAll()
     {
-       return $this->stmt->fetchAll();
+        return $this->stmt->fetchAll();
     }
 
     public function find()
     {
-       return $this->stmt->fetch();
+        return $this->stmt->fetch();
     }
 
     public function findOrFail()
     {
-        $res = $this -> find();
-        if (!$res){
+        $res = $this->find();
+        if (!$res) {
             abort();
-        } 
+        }
         return $res;
     }
 }
