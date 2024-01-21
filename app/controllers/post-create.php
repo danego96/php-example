@@ -1,18 +1,44 @@
 <?php
 
+require_once CORE . '/classes/Validator.php';
 /**
  * @var Db $db
  */
 
- if($_SERVER['REQUEST_METHOD']=='POST'){
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $fillable = ['title', 'excerpt', 'content'];
     $data = load($fillable);
 
     //validation
 
-    $errors = [];
-    if(empty($data['title'])){
+    $validator = new Validator;
+    $validation = $validator->validate($data, [
+        'title' => [
+            'required' => true,
+            'min' => 5,
+            'max' => 190,
+        ],
+        'excerpt' => [
+            'required' => true,
+            'min' => 10,
+            'max' => 190,
+        ],
+        'content' => [
+            'required' => true,
+            'min' => 10,
+        ],
+    ]);
+
+if($validation->hasErrors())
+{
+   print_arr($validation -> getErrors());
+} else {
+    echo 'success';
+}
+
+    die;
+    /*     if(empty($data['title'])){
         $errors['title'] = 'Title is required';
     }
     if(empty($data['excerpt'])){
@@ -21,18 +47,18 @@
     if(empty($data['content'])){
         $errors['content'] = 'Content is required';
     }
-
-if(empty($errors)){
-    if($db->query("INSERT INTO posts (title, excerpt, content) VALUES (:title, :excerpt, :content)", $data)){
-echo 'Ok';
-    } else {
-        echo 'DB error';
-    }
-   // redirect('/posts/create');
- };
+ */
+    if (empty($errors)) {
+        if ($db->query("INSERT INTO posts (title, excerpt, content) VALUES (:title, :excerpt, :content)", $data)) {
+            echo 'Ok';
+        } else {
+            echo 'DB error';
+        }
+        // redirect('/posts/create');
+    };
 }
 
 
-$title = "My Blog:: New Post"; 
+$title = "My Blog:: New Post";
 
 require_once VIEWS . '/post-create.tpl.php';
